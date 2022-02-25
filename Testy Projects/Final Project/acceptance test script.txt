@@ -1,0 +1,100 @@
+# testy_script.txt wmh 2021-04-26 : demo for sending commands to Testy device. Hit 'Enter' to advance through the instructions
+# INFO: comment lines in the script are printed to the system console but ignored by the program.
+# INFO: lines that aren't comments are commands which are sent as strings to the serial port when the user hits 'Enter'.
+# Command ':0100FF' initializes the green LED device. Hit 'Enter' to send the command 
+:0100FF
+# Command ':0200FE' initializes the red LED device. Hit 'Enter' to send the command 
+:0200FE
+# Command ':0201CDAB020083' starts red LED blinking. Hit 'Enter' to send the command
+:0201CDAB020083
+# Command ':0101CDAB020084' starts green LED LED blinking. Hit 'Enter' to send the command
+:0101CDAB020084
+# Command ':020100000000FD' turns red LED on but stops blinking. Hit 'Enter' to send the command
+:020100000000FD
+# Command ':020200000000FC' turns red LED off with no blinking. Hit 'Enter' to send the command
+:020200000000FC
+# Command 300FF Initialize hardware and install blueBUTTON blink task on task list
+:0300FF
+# Command :030100000000FE start_ONtask – Set blink rate and start device_blueBUTTON_ONtask
+:030100000000FE
+# Command :0302FD start_OFFtask – Set blink rate and start device_blueBUTTON_OFFtask
+:030200000000FD	
+# Command :0303FC reportGPIOCpin13– Report blueBUTTON state ('ON' or 'OFF')
+:0303FC
+# Command :010200000000FD set blink interval and start greenLED_OFFtask 
+:010200000000FD
+#TIM
+# Pulse width modulation
+# Command :0400FC TIM3_PWM - Initialize TIM3 to 50% duty cycle, ms resolution, 1s period
+:0400FC	
+# greenLED 
+# Command :0406F6 TIM3_greenLED_PWM_PFM - TIM3 PWM/PFM is input to greenLED
+:0406F6
+# Command :0401FB TIM3_PWM_Increase - increase duty cycle by 10%
+:0401FB
+# Command :0401FB TIM3_PWM_Increase - increase duty cycle by 10%
+:0401FB
+# Command :0401FB TIM3_PWM_Increase - increase duty cycle by 10%
+:0401FB
+# Command :0402FA TIM3_PWM_Decrease - decrease duty cycle by 10%
+:0402FA
+# Command :0402FA TIM3_PWM_Decrease - decrease duty cycle by 10%
+:0402FA
+# Pulse frequency modulation 
+# Command :0403F9 TIM3_PFM - Initialize TIM3 to 50% duty cycle, ms resolution, 1s period
+:0403F9
+# Command :0404F8 TIM3_PFM_Increase - increase freq by 10%
+:0404F8
+# Command :0404F8 TIM3_PFM_Increase - increase freq by 10%
+:0404F8
+# Command :0404F8 TIM3_PFM_Increase - increase freq by 10%
+:0404F8
+# Command :0404F8 TIM3_PFM_Increase - increase freq by 10%
+:0404F8
+# Command :0405F7 TIM3_PFM_Decrease - decrease freq by 10%
+:0405F7
+# Command :0407F5 Disalbe TIM device and greenLED
+:0407F5
+# GPIO
+# Command :0500FB init_GPIO_Input - Initialize PB1 as GPIO input
+:0500FB
+# Command :0501FA init_GPIO_Output - Initialize PC2 as GPIO output
+:0501FA
+# Command :0502F9 GPIO_output_set - Set PC2 to 1
+:0502F9	
+# Command :0503F8 GPIO_output_reset - Set PC2 to 0
+:0503F8
+# Command :0504F7 GPIO_input_read - Read value from PB1 IDR
+:0504F7
+# Command :050510011100D4 GPIO_Input_repetitive - Read value from PB1 IDR continuously
+:050510011100D4
+# Command :050610011100D3 GPIO_Output_repetitive - Output 1 and 0 on PC2 continuously
+:050610011100D3
+# Command :050710011100D2 GPIO_Input_scheduled - Read Input PB1 after x milliseconds
+#:050710011100D2
+# Command :050810011100D1 GPIO_Output_scheduled - Output 1 on output PC2 after x 
+#:050810011100D1
+# Command :0509F2 GPIO_Off_task - Disable both GPIO input and GPIO output
+:0509F2
+# SPI
+# Command :0600FA init_SPItask initializes SPI1 as master, SPI3 as slave, Full Duplex 32bit transfers
+:0600FA
+# Command :0601BBFF00003F MasterTxtask Send word from Master MOSI to Slave MOSI
+:0601BBFF00003F
+# Command :0602F8 MasterRxtask Receive word on MISO
+:0602F8
+# Command :0603452301008E SlaveTxtask Send word from Slave MISO to Master MISO
+:0603452301008E
+# Command :0604F6 SlaveRxtask Receive word on MOSI
+:0604F6
+# Command :0605452301008C MasterTxtask_polled Continuous Send word from Master MOSI to Slave MOSI
+:0605452301008C
+# Command :0606F4 MasterRxtask_polled Continuous Receive word on MISO
+:0606F4
+# Command :0607452301008A SlaveTxtask_polled Continuous Send word from Slave MISO to Master MISO
+:0607452301008A
+# Command :0608F2 SlaveRxtask_polled Continuous Receive word on MOSI
+:0608F2
+# Command :0609F1 Disable SPI Master and Slave
+:0609F1
+# There are no more commands to demonstrate. Hit 'Enter' to quit
